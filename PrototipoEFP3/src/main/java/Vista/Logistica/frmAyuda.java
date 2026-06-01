@@ -112,7 +112,7 @@ public class frmAyuda extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Ferdynand Monroy mayo 2026: agregue la ayuda junto al archivo .chm
         try {
-        String ruta = "C:\\Users\\ferit\\Desktop\\proyFinalP32K26b\\proyectop32k26b\\proyectop32k26b\\src\\main\\java\\Ayudas\\Logistica\\Logistica.chm";
+        String ruta = "C:\\Users\\deleo\\OneDrive\\Desktop\\PrototipoEFP3\\src\\main\\java\\Ayudas\\Logistica\\Logistica.chm";
 
         File archivo = new File(ruta);
 
