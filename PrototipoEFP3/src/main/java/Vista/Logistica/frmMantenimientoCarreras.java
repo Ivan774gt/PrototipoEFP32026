@@ -3,17 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-//Boris de Leon 9959-24-6203
+//Boris de Leon 9959-24-6203 Carreras
 
 package Vista.Logistica;
 import java.io.File;
 import javax.swing.JOptionPane;
 import Controlador.Logistica.clsCarreras;
+import Modelo.Conexion;
 import Modelo.Logistica.CarrerasDAO;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -574,9 +582,34 @@ public class frmMantenimientoCarreras extends javax.swing.JInternalFrame  {
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
     private void btnReportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportes1ActionPerformed
-Vista.Logistica.frmReportes ventana = new Vista.Logistica.frmReportes();
-    ventana.setVisible(true);
-    ventana.setLocationRelativeTo(null);        
+try {
+
+        Connection conn = Conexion.getConnection();
+
+        JasperReport report =
+        JasperCompileManager.compileReport(
+        "C:\\Users\\deleo\\OneDrive\\Desktop\\PrototipoEFP3\\src\\main\\java\\Reportes\\Logistica\\reportCarreras.jrxml"
+        );
+
+        JasperPrint print =
+        JasperFillManager.fillReport(
+                report,
+                new HashMap(),
+                conn
+        );
+
+        JasperViewer viewer =
+        new JasperViewer(print, false);
+
+        viewer.setVisible(true);
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+        JOptionPane.showMessageDialog(null, e);
+
+    }       
     }//GEN-LAST:event_btnReportes1ActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
